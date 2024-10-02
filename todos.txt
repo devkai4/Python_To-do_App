@@ -1,5 +1,3 @@
 repair
 shower
-paly
-fix
 do
