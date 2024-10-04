@@ -9,15 +9,15 @@ while True:
         todos.append(todo)
         with open('todos.txt','w') as file:
             file.writelines(todos)      
-    if 'show' in user_action:
+    elif 'show' in user_action:
         with open('todos.txt','r') as file:
             todos = file.readlines()
         for index, item in enumerate(todos):
             item = item.strip('\n')
             row = f"{index + 1}-{item}"
             print(row)
-    if 'edit' in user_action:
-        number = int(input("Number of the todo to edit: "))
+    elif 'edit' in user_action:
+        number = user_action[5:]
         number = number - 1
         with open('todos.txt','r') as file:
             todos = file.readlines()
@@ -25,8 +25,8 @@ while True:
         todos[number] = new_todo + '\n'
         with open('todos.txt','w') as file:
             file.writelines(todos)
-    if 'complete' in user_action:
-        number = int(input("Number of the todo to complete: "))
+    elif 'complete' in user_action:
+        number = int(user_action[9:]) # list slicing operation
         with open('todos.txt','r') as file:
             todos = file.readlines()
         index = number - 1
@@ -36,7 +36,9 @@ while True:
             file.writelines(todos)
         message = f"Todo {todo_to_remove} has been removed from the list."
         print(message)
-    if 'exit' in user_action:
+    elif 'exit' in user_action:
         break
+    else:
+        print("Command is not valid.")
 
 print("Bye!")
