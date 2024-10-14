@@ -1,3 +1,4 @@
-repair
-shower
-do
+Update the OS
+Make soup.
+Make pizza
+Clean the code
